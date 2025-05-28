@@ -73,15 +73,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server läuft auf http://localhost:${PORT}`);
 });
-
-// Automatisches Öffnen im Chrome-Kiosk-Druckmodus (nur lokal)
-if (process.env.NODE_ENV !== "production") {
-  import("open").then(({ default: open }) => {
-    open(`http://localhost:${PORT}`, {
-      app: {
-        name: "google chrome",
-        arguments: ["--kiosk-printing"],
-      },
-    });
-  });
-}
