@@ -3,7 +3,6 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { generateImage } from "./generator.js";
 import fs from "fs";
-import open from "open";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -75,10 +74,14 @@ app.listen(PORT, () => {
   console.log(`🚀 Server läuft auf http://localhost:${PORT}`);
 });
 
-// Automatisches Öffnen im Chrome-Kiosk-Druckmodus
-await open(`http://localhost:${PORT}`, {
-  app: {
-    name: "google chrome",
-    arguments: ["--kiosk-printing"],
-  },
-});
+// Automatisches Öffnen im Chrome-Kiosk-Druckmodus (nur lokal)
+if (process.env.NODE_ENV !== "production") {
+  import("open").then(({ default: open }) => {
+    open(`http://localhost:${PORT}`, {
+      app: {
+        name: "google chrome",
+        arguments: ["--kiosk-printing"],
+      },
+    });
+  });
+}
