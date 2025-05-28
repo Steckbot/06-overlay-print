@@ -1,0 +1,1 @@
+export const REPLICATE_API_TOKEN = "r8_WHp6DE4RcpE6C2FkNnSY8ZVPeGSojUA24AvKE"  // replicate access token

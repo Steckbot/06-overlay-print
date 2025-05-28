@@ -1,9 +1,10 @@
 import Replicate from "replicate";
-import { REPLICATE_API_TOKEN, ananasPilz_model, ananas_model, pilz_model } from "./config.js";
+import { ananasPilz_model, ananas_model, pilz_model } from "./config.js";
 import fs from "fs";
 import fetch from "node-fetch";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
